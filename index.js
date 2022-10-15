@@ -6,6 +6,7 @@ let timeoutID;
 let pass = 0;
 let it = 1;
 let notFirst = 0;
+let max = 0;
 let newOut = document.getElementById("o-wind");
 let myBar = document.getElementById("mybar");
 let mainCont = document.getElementById("main-cont");
@@ -63,11 +64,14 @@ function getNum(first) {
   }
 
   document.getElementById("numb").innerText = num;
+  if (num > max) max = num;
   setBar(first);
   if (num == 1) {
     clearInterval(intervalID);
     contTop.style.opacity = "1";
     newOut.insertAdjacentText("beforeend", "--DONE--");
+    newOut.insertAdjacentHTML("beforeend", "<br/>");
+    newOut.insertAdjacentText("beforeend", "Max Val: " + max);
     newOut.insertAdjacentHTML("beforeend", "<br/>");
     newOut.scrollTop = newOut.scrollHeight;
   }
