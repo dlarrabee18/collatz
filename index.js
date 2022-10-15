@@ -82,7 +82,11 @@ function getNum(first) {
 function setBar(first) {
   let bgC;
   let bordC;
-  if (num <= 16) {
+  if (num == 1) {
+    bgC = "var(--clr-bar-done)";
+    bordC = "var(--clr-bord-done)";
+    barH = num + 30;
+  } else if (num <= 16) {
     barH = num + 30;
     bgC = "var(--clr-bar-0)";
     bordC = "var(--clr-bord-0)";

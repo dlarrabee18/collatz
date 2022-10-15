@@ -1,4 +1,6 @@
 :root {
+  --clr-bar-done: rgba(74, 71, 235, 0.4);
+  --clr-bord-done: rgba(74, 71, 235);
   --clr-bar-0: rgba(71, 232, 235, 0.4);
   --clr-bar-1: rgb(74, 186, 55, 0.2);
   --clr-bar-2: rgb(88, 149, 235, 0.2);
@@ -55,13 +57,13 @@ body {
 .bar {
   display: flex;
   position: absolute;
-  background-color: var(--clr-bar-0);
+  background-color: var(--clr-bar-done);
   min-width: 50px;
   min-height: 30px;
   max-height: 90vh;
   bottom: 0;
   place-content: center;
-  border: 1px solid var(--clr-bord-0);
+  border: 1px solid var(--clr-bord-done);
   border-bottom: none;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
