@@ -20,6 +20,7 @@ document.getElementById("submit-btn").onclick = function () {
   pass = 0;
   userVal = document.getElementById("usr-inp").value;
   num = parseInt(userVal);
+  if (num <= 0) num = 1;
   document.getElementById("numb").innerText = num;
   getNum(1);
   if (!notFirst) notFirst++;
