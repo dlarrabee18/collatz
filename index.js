@@ -79,6 +79,13 @@ function getNum(first) {
   }
 }
 
+function setOutput(newT, color) {
+  newT.style.color = color;
+  newT.innerText = "Pass " + ++pass + ": " + num;
+  newOut.appendChild(newT);
+  newOut.insertAdjacentHTML("beforeend", "<br/>");
+  newOut.scrollTop = newOut.scrollHeight;
+}
 function setBar(first) {
   let bgC;
   let bordC;
@@ -112,7 +119,6 @@ function setBar(first) {
   myBar.style.backgroundColor = bgC;
   myBar.style.borderColor = bordC;
   myBar.style.height = "" + barH + "px";
-  newOut.insertAdjacentText("beforeend", "Pass " + ++pass + ": " + num);
-  newOut.insertAdjacentHTML("beforeend", "<br/>");
-  newOut.scrollTop = newOut.scrollHeight;
+  let newText = document.createElement("newT");
+  setOutput(newText, bordC);
 }
