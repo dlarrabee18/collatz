@@ -18,9 +18,10 @@ title.onclick = function () {
 document.getElementById("submit-btn").onclick = function () {
   newOut.innerHTML = "";
   pass = 0;
+  max = 0;
   userVal = document.getElementById("usr-inp").value;
   num = parseInt(userVal);
-  if (num <= 0) num = 1;
+  if (num <= 0) num = 5;
   document.getElementById("numb").innerText = num;
   getNum(1);
   if (!notFirst) notFirst++;
