@@ -14,11 +14,20 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: black;
+  background-color: rgb(18, 18, 30);
   box-shadow: inset 0px 0px 10px 1px var(--clr-bar-0);
   overflow: hidden;
 }
 
+#col-title {
+  left: 0;
+  position: absolute;
+  color: white;
+  font-size: 1.2rem;
+  margin: 10px;
+  font-variant: small-caps;
+  cursor: pointer;
+}
 .container {
   display: flex;
   width: 100vw;
@@ -58,7 +67,47 @@ body {
   border-top-right-radius: 5px;
   transition: 399ms;
 }
-
+.bar2 {
+  display: flex;
+  position: absolute;
+  background-color: var(--clr-bar-0);
+  min-width: 50px;
+  min-height: 30px;
+  max-height: 90vh;
+  bottom: 0;
+  place-content: center;
+  border: 1px solid var(--clr-bord-0);
+  border-bottom: none;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transition: 399ms;
+  animation: bar2ani 2s linear 0s 1 forwards;
+}
+@keyframes bar2ani {
+  0% {
+    transform: translate(-75px, 0);
+  }
+  20% {
+    transform: translate(-150px, 0);
+  }
+  40% {
+    transform: translate(-225px, 0);
+  }
+  60% {
+    transform: translate(-300px, 0);
+  }
+  80% {
+    transform: translate(-375px, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-412px, 0);
+  }
+  100% {
+    transform: translate(-450px, 0);
+    opacity: 0;
+  }
+}
 #numb {
   font-weight: bold;
   position: absolute;
@@ -70,6 +119,7 @@ body {
   display: flex;
   padding: 10px;
   height: 2rem;
+  transition: opacity 2s;
 }
 #start-num {
   color: white;

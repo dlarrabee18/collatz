@@ -4,8 +4,16 @@ let barH = 0;
 let intervalID;
 let timeoutID;
 let pass = 0;
+let it = 1;
+let notFirst = 0;
 let newOut = document.getElementById("o-wind");
 let myBar = document.getElementById("mybar");
+let mainCont = document.getElementById("main-cont");
+let contTop = document.getElementById("top-con");
+let title = document.getElementById("col-title");
+title.onclick = function () {
+  location.reload();
+};
 document.getElementById("submit-btn").onclick = function () {
   newOut.innerHTML = "";
   pass = 0;
@@ -13,9 +21,29 @@ document.getElementById("submit-btn").onclick = function () {
   num = parseInt(userVal);
   document.getElementById("numb").innerText = num;
   getNum(1);
+  if (!notFirst) notFirst++;
   clearTimeout(timeoutID);
+  contTop.style.opacity = "0";
   timeoutID = setTimeout(collatz, 1000);
 };
+
+function clearInt(int) {
+  clearInterval(int);
+}
+function createBar(bgC, bordC, barH) {
+  let barDel;
+  let newBar = document.createElement("newB");
+  let newSpan = document.createElement("newS");
+  newSpan.setAttribute("id", "numb");
+  newSpan.textContent = num;
+  newBar.setAttribute("class", "bar2");
+  newBar.style.backgroundColor = bgC;
+  newBar.style.borderColor = bordC;
+  newBar.style.height = "" + barH + "px";
+  newBar.appendChild(newSpan);
+  setTimeout(() => mainCont.appendChild(newBar), 400);
+  setTimeout(() => mainCont.removeChild(newBar), 2400);
+}
 
 function collatz() {
   clearInterval(intervalID);
@@ -35,16 +63,17 @@ function getNum(first) {
   }
 
   document.getElementById("numb").innerText = num;
-  setBar();
+  setBar(first);
   if (num == 1) {
     clearInterval(intervalID);
+    contTop.style.opacity = "1";
     newOut.insertAdjacentText("beforeend", "--DONE--");
     newOut.insertAdjacentHTML("beforeend", "<br/>");
     newOut.scrollTop = newOut.scrollHeight;
   }
 }
 
-function setBar() {
+function setBar(first) {
   let bgC;
   let bordC;
   if (num <= 16) {
@@ -68,6 +97,8 @@ function setBar() {
     bgC = "var(--clr-bar-4)";
     bordC = "var(--clr-bord-4)";
   }
+
+  createBar(bgC, bordC, barH);
   myBar.style.backgroundColor = bgC;
   myBar.style.borderColor = bordC;
   myBar.style.height = "" + barH + "px";
